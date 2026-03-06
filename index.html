@@ -1,6 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+  // 1. Block right-click
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  
+  // 2. Try to block common DevTools shortcuts
+  document.addEventListener('keydown', e => {
+    // F12
+    if (e.key === 'F12' || e.keyCode === 123) {
+      e.preventDefault();
+      return false;
+    }
+    // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) {
+      e.preventDefault();
+      return false;
+    }
+    // Ctrl+U (view source)
+    if (e.ctrlKey && e.key === 'u') {
+      e.preventDefault();
+      return false;
+    }
+  });
+  
+  // 3. Very basic DevTools detection + nuisance (many false positives!)
+  const devtoolsOpen = new RegExp('devtools', 'i');
+  setInterval(() => {
+    const threshold = 160; // rough size diff when docked
+    if (Math.abs(window.outerWidth - window.innerWidth) > threshold ||
+        Math.abs(window.outerHeight - window.innerHeight) > threshold) {
+      // Could blank page, alert, redirect, etc.
+      document.body.innerHTML = '<h1 style="color:red;text-align:center;">Please close developer tools to continue</h1>';
+    }
+  }, 500);
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Discord Nitro</title>
