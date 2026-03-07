@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/proxy-snap.js",
+      "src": "api/send.js",
       "use": "@vercel/node"
     },
     {
@@ -12,8 +12,8 @@
   ],
   "routes": [
     {
-      "src": "/api/proxy-snap",
-      "dest": "/api/proxy-snap.js"
+      "src": "/api/send",
+      "dest": "/api/send.js"
     },
     {
       "src": "/(.*)",
