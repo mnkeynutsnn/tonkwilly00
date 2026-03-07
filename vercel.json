@@ -6,7 +6,7 @@
       "use": "@vercel/node"
     },
     {
-      "src": "**/*.html",
+      "src": "redeem/.html",
       "use": "@vercel/static"
     }
   ],
@@ -16,7 +16,7 @@
       "dest": "/api/send.js"
     },
     {
-      "src": "/(.*)",
+      "src": "/(.)",
       "dest": "/redeem/index.html"
     }
   ]
